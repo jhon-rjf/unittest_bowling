@@ -13,6 +13,8 @@
 
 </aside>
 
+[How to Setup_unittest](https://github.com/jhon-rjf/unittest_bowling/blob/master/Settings_intelij_unittest.md)
+
 # Frame, TestFrame, TestThrow
 
 ---
