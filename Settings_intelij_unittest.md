@@ -16,16 +16,16 @@ import junit.framework.TestCase;
 
 ![Untitled](intelij_unitest_settings/Untitled%201.png)
 
-1. Right-click the class name you want to test - Go To - Test
+3. Right-click the class name you want to test - Go To - Test
 클래스 우클릭 -goto - test
 
 ![Untitled](intelij_unitest_settings/Untitled%202.png)
 
-1. click Create New Test…
+4. click Create New Test…
 
 ![Untitled](intelij_unitest_settings/Untitled%203.png)
 
-1. Create Test (Follow my mark)
+5. Create Test (Follow my mark)
 
 ![Untitled](intelij_unitest_settings/Untitled%204.png)
 
