@@ -4,6 +4,14 @@ public class TestGame extends TestCase {
     public TestGame(String name){
         super(name);
     }
+    private Game g;
+
+    public void setUp()
+    {
+        g = new Game();
+    }
+
+
     public void testFourThrowsNoMark()
     {
         Game g = new Game();
@@ -20,4 +28,13 @@ public class TestGame extends TestCase {
         assertEquals(18, g.scoreForFrame(2));
         // score2 =  18
     }
+
+    public void testSimpleSpare()
+    {
+        g.add(3);
+        g.add(7); // 스페어
+        g.add(3); // 1차 -> 이전스코어(0) + 10 + 1차(3) = 13
+        assertEquals(13, g.scoreForFrame(1));
+    }
+
 }
