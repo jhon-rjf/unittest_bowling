@@ -13,13 +13,13 @@ public class Game {
         itsScore += pins;
     }
 
-    public int scoreForFrame(int frame) // 배열 돌면서 계산
+    public int scoreForFrame(int theFrame) // 배열 돌면서 계산
     {
+        int ball = 0;
         int score = 0;
-        for (int ball=0; frame>0 && (ball<itsCurrentThrow); ball+=2,frame--) {
-            score += itsThrows[ball] + itsThrows[ball+1];
-            // 한 프레임의 점수 = 앞투구 + 뒤투구, 스트라이크와 스페어의 경우 고려 하지 않음
-           // 1프레임에 2투구를 표현,
+        for (int currentFrame = 0; currentFrame < theFrame; currentFrame++)
+        {
+            score += itsThrows[ball++] + itsThrows[ball++];
         }
         return score;
     }
