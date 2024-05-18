@@ -19,7 +19,9 @@ public class Game {
         int score = 0;
         for (int currentFrame = 0; currentFrame < theFrame; currentFrame++)
         {
-            score += itsThrows[ball++] + itsThrows[ball++];
+            int firstThrow = itsThrows[ball++]; // 첫 번째 투구 계산
+            int secondThrow = itsThrows[ball++]; // 두 번째 투구 계산
+            score += firstThrow + secondThrow; // 프레임 당 점수 계산
         }
         return score;
     }
