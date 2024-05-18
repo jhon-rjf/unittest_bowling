@@ -1,6 +1,6 @@
 import junit.framework.TestCase;
 
-public class GameTest extends TestCase {
+public class TestGame extends TestCase {
     public TestGame(String name){
         super(name);
     }
