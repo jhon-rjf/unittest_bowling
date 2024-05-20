@@ -53,7 +53,7 @@ public class TestGame extends TestCase {
         g.add(7); // 1/2
         g.add(3); // 2/1
         g.add(2); // 2/2
-        assertEquals(13, g.scoreForFrame(1)); // 통과
+        assertEquals(13, g.scoreForFrame(1));
         assertEquals(18, g.scoreForFrame(2));
         assertEquals(18, g.score());
         assertEquals(3, g.getCurrentFrame());

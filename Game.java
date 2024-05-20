@@ -34,24 +34,38 @@ public class Game {
         int score = 0;
 
         for (int currentFrame = 0; currentFrame < theFrame;	currentFrame++) {
-            firstThrow = itsThrows[ball++]; // 첫 번째 투구 계산
-            if (firstThrow == 10) {
-                score += 10 + itsThrows[ball] + itsThrows[ball + 1];
+            firstThrow = itsThrows[ball]; // 첫 번째 투구 계산
+            if (strike()) {
+                ball++;
+                score += 10 + nextTwoBalls();
             } else {
-                 secondThrow = itsThrows[ball++];
-
-                int frameScore = firstThrow + secondThrow;
-                if (frameScore == 10)
-                    score += frameScore + itsThrows[ball];
-                else
-                    score += frameScore;
+                score += handleSecondThrow();
             }
         }// end for-loop
-
         return score; // 프레임 점수 반환!
     }
+    private boolean strike() {
+        return itsThrows[ball] == 10;
+    }
+    private int nextTwoBalls() {
+        return itsThrows[ball] + itsThrows[ball+1];
+    }
 
+private int handleSecondThrow() {
+        int score = 0;
+        secondThrow = itsThrows[ball+1];
 
+        int frameScore = firstThrow + secondThrow;
+        //스페어는 다음 프레임의 첫 번째 투구에 필요하다.
+    if (frameScore == 10) {
+        ball += 2;
+        score += frameScore + itsThrows[ball];
+    } else {
+        ball += 2;
+        score += frameScore;
+    }
+    return score;
+    }
 
 
 
