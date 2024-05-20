@@ -13,6 +13,10 @@ public class Game {
         itsScore += pins;
     }
 
+    public int getCurrentFrame()
+    {
+        return 1; // 현재 프레임 : 1
+    }
 
     public int scoreForFrame(int theFrame)
     {

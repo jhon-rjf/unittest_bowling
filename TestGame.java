@@ -11,7 +11,12 @@ public class TestGame extends TestCase {
         g = new Game();
     }
 
-
+    public void testOneThrow()
+    {
+        g.add(5); // 1-1
+        assertEquals(5, g.score()); // 1-1의 점수가 5인지 체크
+        assertEquals(1, g.getCurrentFrame()); // 현재 프레임이 1인지 체크
+    }
     public void testFourThrowsNoMark()
     {
         Game g = new Game();
