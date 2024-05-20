@@ -17,6 +17,15 @@ public class TestGame extends TestCase {
         assertEquals(5, g.score()); // 1-1의 점수가 5인지 체크
         assertEquals(1, g.getCurrentFrame()); // 현재 프레임이 1인지 체크
     }
+
+    public void testTwoThrowsNoMark()
+    {
+        g.add(5); // 1/1
+        g.add(4); // 1/2
+        assertEquals(9, g.score()); // 1frame합산 9?
+        assertEquals(1, g.getCurrentFrame()); // 현재 프레임이 1인지 체크
+    }
+
     public void testFourThrowsNoMark()
     {
         Game g = new Game();
@@ -32,6 +41,7 @@ public class TestGame extends TestCase {
         // score1 = 9
         assertEquals(18, g.scoreForFrame(2));
         // score2 =  18
+        assertEquals(2, g.scoreForFrame());
     }
 
     public void testSimpleSpare()
