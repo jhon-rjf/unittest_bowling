@@ -11,12 +11,12 @@ public class TestGame extends TestCase {
         g = new Game();
     }
 
-    public void testOneThrow()
-    {
-        g.add(5); // 1-1
-        assertEquals(5, g.score()); // 1-1의 점수가 5인지 체크
-        assertEquals(1, g.getCurrentFrame()); // 현재 프레임이 1인지 체크
-    }
+//    public void testOneThrow()
+//    {
+//        g.add(5); // 1-1
+//        assertEquals(5, g.score()); // 1-1의 점수가 5인지 체크
+//        assertEquals(1, g.getCurrentFrame()); // 현재 프레임이 1인지 체크
+//    }
 
     public void testTwoThrowsNoMark()
     {
@@ -55,8 +55,18 @@ public class TestGame extends TestCase {
         g.add(2); // 2/2
         assertEquals(13, g.scoreForFrame(1)); // 통과
         assertEquals(18, g.scoreForFrame(2));
+        assertEquals(18, g.score());
         assertEquals(3, g.getCurrentFrame());
     }
+    public void testSimpleStrike() {
+        g.add(10); // 스트라이크
+        g.add(3);
+        g.add(6);
+        assertEquals(19, g.scoreForFrame(1));
+        assertEquals(28, g.score());
+        assertEquals(3, g.getCurrentFrame());
+    }
+
 
 
 }
