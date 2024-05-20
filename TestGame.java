@@ -79,4 +79,90 @@ public class TestGame extends TestCase {
         assertEquals(11, g.getCurrentFrame());
     }
 
+    public void testEndOfArray()
+    {
+        for (int i=0; i<9; i++)
+        {
+            g.add(0);
+            g.add(0);
+        }
+        g.add(2);
+        g.add(8); // 10번째 프레임의 스페어
+        g.add(10); // 배열 마지막 위치에서의 스트라이크
+        assertEquals(20, g.score());
+    }
+
+    public void testSampleGame()
+    {
+        // frame#1
+        g.add(1);
+        g.add(4);
+        // frame#2
+        g.add(4);
+        g.add(5);
+        // frame#3
+        g.add(6);
+        g.add(4);
+        // frame#4
+        g.add(5);
+        g.add(5);
+        // frame#5
+        g.add(10);
+        // frame#6
+        g.add(0);
+        g.add(1);
+        // frame#7
+        g.add(7);
+        g.add(3);
+        // frame#8
+        g.add(6);
+        g.add(4);
+        // frame#9
+        g.add(10);
+        g.add(2);
+        // frame#10
+        g.add(8);
+        g.add(6);
+
+        assertEquals(133, g.score());
+    } // 모두 pass
+
+    public void testHeartBreak()
+    {
+        // 11개의 스트라이크
+        for (int i=0; i<11; i++)
+            g.add(10);
+
+        // 추가 투구
+        g.add(9);
+        assertEquals(299, g.score());
+    } // all pass
+    public void testTenthFrameSpare()
+    {
+        // 9개의 스트라이크
+        for (int i=0; i<9; i++)
+            g.add(10);
+
+        // 10번 쨰 투구가 스페어
+        g.add(9);
+        g.add(1);
+        // 추가 투구
+        g.add(1);
+
+        assertEquals(270, g.score());
+    } // all pass
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

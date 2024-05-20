@@ -31,23 +31,23 @@ public class Game {
     public int scoreForFrame(int theFrame)
     {
         int ball = 0;
-        int score=0;
+        int score = 0;
 
-        for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
+        for (int currentFrame = 0; currentFrame < theFrame;	currentFrame++) {
             int firstThrow = itsThrows[ball++]; // 첫 번째 투구 계산
             if (firstThrow == 10) {
                 score += 10 + itsThrows[ball] + itsThrows[ball + 1];
             } else {
-                int secondThrow = itsThrows[ball++]; // 두 번째 투구 계산
-                int frameScore = firstThrow + secondThrow; // 두 투구를 더한 값
+                int secondThrow = itsThrows[ball++];
 
-                // 스페어인 경우, 다음 프레임의 첫 번째 투구가 필요하다.
+                int frameScore = firstThrow + secondThrow;
                 if (frameScore == 10)
-                    score += frameScore + itsThrows[ball]; // 다음의 투구를 더한 값
+                    score += frameScore + itsThrows[ball];
                 else
-                    score += frameScore; // 스페어가 아닌 경우
-            } // end for-loop
-        }
+                    score += frameScore;
+            }
+        }// end for-loop
+
         return score; // 프레임 점수 반환!
     }
 
