@@ -41,7 +41,7 @@ public class TestGame extends TestCase {
         // score1 = 9
         assertEquals(18, g.scoreForFrame(2));
         // score2 =  18
-        assertEquals(2, g.scoreForFrame());
+        assertEquals(2, g.getCurrentFrame());
     }
 
     public void testSimpleSpare()

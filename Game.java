@@ -6,18 +6,27 @@ public class Game {
         return itsScore;
     }
 
-    public void add(int pins)
-    {
-        itsThrows[itsCurrentThrow++]=pins;
-        //현재 투구에 pins 값 저장, 다음 투구로 ++해준다
-        itsScore += pins;
-    }
+
 
     public int getCurrentFrame()
     {
-        return 1; // 현재 프레임 : 1
+        return itsCurrentFrame;
+        // 현재 프레임인 itsCurrentFrame을 반환
     }
-
+    public void add(int pins)
+    {
+        itsThrows[itsCurrentThrow++]=pins;
+        itsScore += pins;
+        if (firstThrow == true)	{ // 첫 투구시,
+            firstThrow = false; 		// 첫 투구
+            itsCurrentFrame++; 			// 프레임 조정
+        }
+        else { 					  // 첫 투구 아닐 시
+            firstThrow=true;; 			// 첫 투구
+        }
+    }
+    private int itsCurrentFrame = 0; // 현재 프레임 번호
+    private boolean firstThrow = true; // 각 프레임에서 첫번째 투구 여부
     public int scoreForFrame(int theFrame)
     {
         int ball = 0;
