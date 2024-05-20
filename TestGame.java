@@ -74,9 +74,9 @@ public class TestGame extends TestCase {
             g.add(10);
         }
         assertEquals(300, g.score());
-        // 기대값 : 10프레임 * 30 = 300
+        // 기대값 : 10 * 30 = 300
         // 실제값 : 330
-        assertEquals(10, g.getCurrentFrame());
+        assertEquals(11, g.getCurrentFrame());
     }
 
 }

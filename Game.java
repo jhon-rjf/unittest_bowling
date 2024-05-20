@@ -25,6 +25,7 @@ public class Game {
             // 내가 던지고 있는 프레임 번호를 지정하기 위해 각 프레임의 마지막 투구 직후에 증가
             // 다음에 투구할 프레임을 가르키게 됨
         }
+        itsCurrentFrame = Math.min(11, itsCurrentFrame);
     }
 
     public int scoreForFrame(int theFrame)
