@@ -67,6 +67,16 @@ public class TestGame extends TestCase {
         assertEquals(3, g.getCurrentFrame());
     }
 
-
+    public void testPerfectGame()
+    {
+        for (int i=0; i<12; i++)
+        {
+            g.add(10);
+        }
+        assertEquals(300, g.score());
+        // 기대값 : 10프레임 * 30 = 300
+        // 실제값 : 330
+        assertEquals(10, g.getCurrentFrame());
+    }
 
 }
