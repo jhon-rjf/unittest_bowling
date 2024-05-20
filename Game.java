@@ -27,7 +27,7 @@ public class Game {
 
             // 스페어인 경우, 다음 프레임의 첫 번째 투구가 필요하다.
             if ( frameScore == 10 )
-                score += frameScore + itsThrows[ball++]; // 다음의 투구를 더한 값
+                score += frameScore + itsThrows[ball]; // 다음의 투구를 더한 값
             else
                 score += frameScore; // 스페어가 아닌 경우
         } // end for-loop
