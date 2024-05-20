@@ -17,15 +17,21 @@ public class Game {
     {
         itsThrows[itsCurrentThrow++]=pins;
         itsScore += pins;
-        if (firstThrow == true)	{ // 첫 투구시,
-            firstThrow = false; 		// 첫 투구
-            itsCurrentFrame++; 			// 프레임 조정
+        adjustCurrentFrame();
+    }
+    private void adjustCurrentFrame() {
+        if (firstThrow == true) {
+            firstThrow = false;
         }
-        else { 					  // 첫 투구 아닐 시
-            firstThrow=true;; 			// 첫 투구
+        else {
+            firstThrow=true;
+            itsCurrentFrame++;
+            // 내가 던지고 있는 프레임 번호를 지정하기 위해 각 프레임의 마지막 투구 직후에 증가
+            // 다음에 투구할 프레임을 가르키게 됨
         }
     }
-    private int itsCurrentFrame = 0; // 현재 프레임 번호
+
+    private int itsCurrentFrame = 1;; // 현재 프레임 번호
     private boolean firstThrow = true; // 각 프레임에서 첫번째 투구 여부
     public int scoreForFrame(int theFrame)
     {
