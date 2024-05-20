@@ -32,18 +32,30 @@ public class Game {
     {
         ball = 0;
         int score = 0;
-
         for (int currentFrame = 0; currentFrame < theFrame;	currentFrame++) {
-            firstThrow = itsThrows[ball]; // 첫 번째 투구 계산
             if (strike()) {
+                score += 10 + nextTwoBallsForStrike();
                 ball++;
-                score += 10 + nextTwoBalls();
-            } else {
-                score += handleSecondThrow();
+
+            } else if(spare()) {
+            score += 10 + nextBallForSpare();
+            ball += 2;
+            }else {
+                score += twoBallsInFrame();
+                ball += 2;
             }
-        }// end for-loop
+        }
         return score; // 프레임 점수 반환!
     }
+
+    private int nextTwoBallsForStrike(){
+        return itsThrows[ball+1] + itsThrows[ball+2];
+    }
+
+    private int nextBallForSpare(){
+        return itsThrows[ball+2];
+    }
+
     private boolean strike() {
         return itsThrows[ball] == 10;
     }
@@ -53,10 +65,6 @@ public class Game {
 
 private int handleSecondThrow() {
         int score = 0;
-        secondThrow = itsThrows[ball+1];
-
-        int frameScore = firstThrow + secondThrow;
-        //스페어는 다음 프레임의 첫 번째 투구에 필요하다.
     if (spare()) {
         ball += 2;
         score += 10 + nextBall();
