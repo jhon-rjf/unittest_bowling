@@ -3,14 +3,14 @@ public class Game {
 
     public int score()
     {
-        return scoreForFrame(getCurrentFrame() -1);
+        return scoreForFrame(itsCurrentFrame);
     }
-
-    public int getCurrentFrame()
-    {
-        return itsCurrentFrame;
-        // 현재 프레임인 itsCurrentFrame을 반환
-    }
+//
+//    public int getCurrentFrame()
+//    {
+//        return itsCurrentFrame;
+//        // 현재 프레임인 itsCurrentFrame을 반환
+//    }
 
     public void add(int pins)
     {
@@ -19,18 +19,20 @@ public class Game {
     }
 
     private void adjustCurrentFrame(int pins) {
-        if (firstThrowInFrame == true) {
-            if(adjustFrameForStrike(pins) == false)//스트라이크
+        if (lastBallInFrame(pins))
                 advanceFrame();
             else
                 firstThrowInFrame = false;
-        } else {
-            firstThrowInFrame=true;
-            advanceFrame();
-            // 내가 던지고 있는 프레임 번호를 지정하기 위해 각 프레임의 마지막 투구 직후에 증가
-            // 다음에 투구할 프레임을 가르키게 됨
         }
-    }
+
+    private boolean lastBallInFrame(int pins){
+            return strike(pins) || !firstThrowInFrame;
+        }
+
+    private  boolean strike(int pins){
+            return (firstThrowInFrame && pins ==10);
+        }
+
 
     private boolean adjustFrameForStrike(int pins) {
         if (pins == 10) {
@@ -41,7 +43,7 @@ public class Game {
     }
 
     private void advanceFrame() {
-        itsCurrentFrame = Math.min(11, itsCurrentFrame + 1);
+        itsCurrentFrame = Math.min(10, itsCurrentFrame + 1);
     }
 
     public int scoreForFrame(int theFrame)
@@ -114,11 +116,10 @@ public class Game {
 //    private int secondThrow;
 //
 //
-
-    private int itsScore = 0; // 점수 계산
+//    private int itsScore = 0; // 점수 계산
 //    private int[] itsThrows = new int[21]; // 프레임
 //    private int itsCurrentThrow = 0;// 투구 순번
-    private int itsCurrentFrame = 1;; // 현재 프레임 번호
+    private int itsCurrentFrame = 0;; // 현재 프레임 번호
     private boolean firstThrowInFrame = true; // 각 프레임에서 첫번째 투구 여부
     private Scorer itsScorer = new Scorer();
 }
