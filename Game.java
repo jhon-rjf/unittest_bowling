@@ -57,18 +57,27 @@ private int handleSecondThrow() {
 
         int frameScore = firstThrow + secondThrow;
         //스페어는 다음 프레임의 첫 번째 투구에 필요하다.
-    if (frameScore == 10) {
+    if (spare()) {
         ball += 2;
-        score += frameScore + itsThrows[ball];
+        score += 10 + nextBall();
     } else {
+        score += twoBallsInFrame();
         ball += 2;
-        score += frameScore;
     }
     return score;
     }
 
+    private int twoBallsInFrame() {
+        return itsThrows[ball] + itsThrows[ball+1];
+    }
 
+    private boolean spare() {
+        return (itsThrows[ball] + itsThrows[ball + 1]) == 10;
+    }
 
+    private int nextBall() {
+        return itsThrows[ball];
+    }
 
     public int getCurrentFrame()
     {
